@@ -32,26 +32,21 @@
             this.lblHigh = new System.Windows.Forms.Label();
             this.lblLow = new System.Windows.Forms.Label();
             this.lblInstructions = new System.Windows.Forms.Label();
-            this.imgHighTopLeft = new System.Windows.Forms.PictureBox();
-            this.imgHighBotLeft = new System.Windows.Forms.PictureBox();
-            this.imgHighTopRight = new System.Windows.Forms.PictureBox();
-            this.imgHighBotRight = new System.Windows.Forms.PictureBox();
-            this.imgLowBotRight = new System.Windows.Forms.PictureBox();
-            this.imgLowTopRight = new System.Windows.Forms.PictureBox();
-            this.imgLowBotLeft = new System.Windows.Forms.PictureBox();
-            this.imgLowTopLeft = new System.Windows.Forms.PictureBox();
-            this.imgPlayerMid = new System.Windows.Forms.PictureBox();
+            this.imgHighLeft = new System.Windows.Forms.PictureBox();
+            this.imgHighMid = new System.Windows.Forms.PictureBox();
+            this.imgHighRight = new System.Windows.Forms.PictureBox();
+            this.imgLowRight = new System.Windows.Forms.PictureBox();
+            this.imgLowMid = new System.Windows.Forms.PictureBox();
+            this.imgLowLeft = new System.Windows.Forms.PictureBox();
             this.imgPlayerLeft = new System.Windows.Forms.PictureBox();
             this.imgPlayerRight = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighTopLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighBotLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighTopRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighBotRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowBotRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowTopRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowBotLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowTopLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPlayerMid)).BeginInit();
+            this.btnRoll = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighMid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowMid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerRight)).BeginInit();
             this.SuspendLayout();
@@ -76,101 +71,75 @@
             this.lblLow.Size = new System.Drawing.Size(147, 61);
             this.lblLow.TabIndex = 1;
             this.lblLow.Text = "LOW";
+            this.lblLow.Click += new System.EventHandler(this.lblLow_Click);
             // 
             // lblInstructions
             // 
             this.lblInstructions.AutoSize = true;
-            this.lblInstructions.Font = new System.Drawing.Font("Felix Titling", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructions.Location = new System.Drawing.Point(50, 275);
+            this.lblInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstructions.Location = new System.Drawing.Point(127, 275);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(674, 32);
+            this.lblInstructions.Size = new System.Drawing.Size(550, 31);
             this.lblInstructions.TabIndex = 2;
             this.lblInstructions.Text = "Choose whether die will be HIGH or LOW";
             // 
-            // imgHighTopLeft
+            // imgHighLeft
             // 
-            this.imgHighTopLeft.Location = new System.Drawing.Point(41, 89);
-            this.imgHighTopLeft.Name = "imgHighTopLeft";
-            this.imgHighTopLeft.Size = new System.Drawing.Size(115, 83);
-            this.imgHighTopLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgHighTopLeft.TabIndex = 3;
-            this.imgHighTopLeft.TabStop = false;
+            this.imgHighLeft.Location = new System.Drawing.Point(12, 89);
+            this.imgHighLeft.Name = "imgHighLeft";
+            this.imgHighLeft.Size = new System.Drawing.Size(115, 83);
+            this.imgHighLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgHighLeft.TabIndex = 3;
+            this.imgHighLeft.TabStop = false;
             // 
-            // imgHighBotLeft
+            // imgHighMid
             // 
-            this.imgHighBotLeft.Location = new System.Drawing.Point(41, 178);
-            this.imgHighBotLeft.Name = "imgHighBotLeft";
-            this.imgHighBotLeft.Size = new System.Drawing.Size(115, 83);
-            this.imgHighBotLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgHighBotLeft.TabIndex = 4;
-            this.imgHighBotLeft.TabStop = false;
+            this.imgHighMid.Location = new System.Drawing.Point(133, 89);
+            this.imgHighMid.Name = "imgHighMid";
+            this.imgHighMid.Size = new System.Drawing.Size(115, 83);
+            this.imgHighMid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgHighMid.TabIndex = 4;
+            this.imgHighMid.TabStop = false;
             // 
-            // imgHighTopRight
+            // imgHighRight
             // 
-            this.imgHighTopRight.Location = new System.Drawing.Point(161, 89);
-            this.imgHighTopRight.Name = "imgHighTopRight";
-            this.imgHighTopRight.Size = new System.Drawing.Size(115, 83);
-            this.imgHighTopRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgHighTopRight.TabIndex = 5;
-            this.imgHighTopRight.TabStop = false;
+            this.imgHighRight.Location = new System.Drawing.Point(254, 89);
+            this.imgHighRight.Name = "imgHighRight";
+            this.imgHighRight.Size = new System.Drawing.Size(115, 83);
+            this.imgHighRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgHighRight.TabIndex = 5;
+            this.imgHighRight.TabStop = false;
             // 
-            // imgHighBotRight
+            // imgLowRight
             // 
-            this.imgHighBotRight.Location = new System.Drawing.Point(162, 178);
-            this.imgHighBotRight.Name = "imgHighBotRight";
-            this.imgHighBotRight.Size = new System.Drawing.Size(115, 83);
-            this.imgHighBotRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgHighBotRight.TabIndex = 6;
-            this.imgHighBotRight.TabStop = false;
+            this.imgLowRight.Location = new System.Drawing.Point(673, 89);
+            this.imgLowRight.Name = "imgLowRight";
+            this.imgLowRight.Size = new System.Drawing.Size(115, 83);
+            this.imgLowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLowRight.TabIndex = 9;
+            this.imgLowRight.TabStop = false;
             // 
-            // imgLowBotRight
+            // imgLowMid
             // 
-            this.imgLowBotRight.Location = new System.Drawing.Point(560, 178);
-            this.imgLowBotRight.Name = "imgLowBotRight";
-            this.imgLowBotRight.Size = new System.Drawing.Size(115, 83);
-            this.imgLowBotRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLowBotRight.TabIndex = 10;
-            this.imgLowBotRight.TabStop = false;
+            this.imgLowMid.Location = new System.Drawing.Point(552, 89);
+            this.imgLowMid.Name = "imgLowMid";
+            this.imgLowMid.Size = new System.Drawing.Size(115, 83);
+            this.imgLowMid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLowMid.TabIndex = 8;
+            this.imgLowMid.TabStop = false;
             // 
-            // imgLowTopRight
+            // imgLowLeft
             // 
-            this.imgLowTopRight.Location = new System.Drawing.Point(559, 89);
-            this.imgLowTopRight.Name = "imgLowTopRight";
-            this.imgLowTopRight.Size = new System.Drawing.Size(115, 83);
-            this.imgLowTopRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLowTopRight.TabIndex = 9;
-            this.imgLowTopRight.TabStop = false;
-            // 
-            // imgLowBotLeft
-            // 
-            this.imgLowBotLeft.Location = new System.Drawing.Point(439, 178);
-            this.imgLowBotLeft.Name = "imgLowBotLeft";
-            this.imgLowBotLeft.Size = new System.Drawing.Size(115, 83);
-            this.imgLowBotLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLowBotLeft.TabIndex = 8;
-            this.imgLowBotLeft.TabStop = false;
-            // 
-            // imgLowTopLeft
-            // 
-            this.imgLowTopLeft.Location = new System.Drawing.Point(439, 89);
-            this.imgLowTopLeft.Name = "imgLowTopLeft";
-            this.imgLowTopLeft.Size = new System.Drawing.Size(115, 83);
-            this.imgLowTopLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLowTopLeft.TabIndex = 7;
-            this.imgLowTopLeft.TabStop = false;
-            // 
-            // imgPlayerMid
-            // 
-            this.imgPlayerMid.Location = new System.Drawing.Point(314, 339);
-            this.imgPlayerMid.Name = "imgPlayerMid";
-            this.imgPlayerMid.Size = new System.Drawing.Size(115, 83);
-            this.imgPlayerMid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPlayerMid.TabIndex = 12;
-            this.imgPlayerMid.TabStop = false;
+            this.imgLowLeft.Location = new System.Drawing.Point(431, 89);
+            this.imgLowLeft.Name = "imgLowLeft";
+            this.imgLowLeft.Size = new System.Drawing.Size(115, 83);
+            this.imgLowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgLowLeft.TabIndex = 7;
+            this.imgLowLeft.TabStop = false;
             // 
             // imgPlayerLeft
             // 
-            this.imgPlayerLeft.Location = new System.Drawing.Point(193, 339);
+            this.imgPlayerLeft.Location = new System.Drawing.Point(204, 339);
             this.imgPlayerLeft.Name = "imgPlayerLeft";
             this.imgPlayerLeft.Size = new System.Drawing.Size(115, 83);
             this.imgPlayerLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -179,29 +148,38 @@
             // 
             // imgPlayerRight
             // 
-            this.imgPlayerRight.Location = new System.Drawing.Point(435, 339);
+            this.imgPlayerRight.Location = new System.Drawing.Point(480, 339);
             this.imgPlayerRight.Name = "imgPlayerRight";
             this.imgPlayerRight.Size = new System.Drawing.Size(115, 83);
             this.imgPlayerRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPlayerRight.TabIndex = 13;
             this.imgPlayerRight.TabStop = false;
             // 
+            // btnRoll
+            // 
+            this.btnRoll.Enabled = false;
+            this.btnRoll.Location = new System.Drawing.Point(325, 339);
+            this.btnRoll.Name = "btnRoll";
+            this.btnRoll.Size = new System.Drawing.Size(149, 83);
+            this.btnRoll.TabIndex = 14;
+            this.btnRoll.Text = "Roll";
+            this.btnRoll.UseVisualStyleBackColor = true;
+            this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRoll);
             this.Controls.Add(this.imgPlayerRight);
-            this.Controls.Add(this.imgPlayerMid);
             this.Controls.Add(this.imgPlayerLeft);
-            this.Controls.Add(this.imgLowBotRight);
-            this.Controls.Add(this.imgLowTopRight);
-            this.Controls.Add(this.imgLowBotLeft);
-            this.Controls.Add(this.imgLowTopLeft);
-            this.Controls.Add(this.imgHighBotRight);
-            this.Controls.Add(this.imgHighTopRight);
-            this.Controls.Add(this.imgHighBotLeft);
-            this.Controls.Add(this.imgHighTopLeft);
+            this.Controls.Add(this.imgLowRight);
+            this.Controls.Add(this.imgLowMid);
+            this.Controls.Add(this.imgLowLeft);
+            this.Controls.Add(this.imgHighRight);
+            this.Controls.Add(this.imgHighMid);
+            this.Controls.Add(this.imgHighLeft);
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.lblLow);
             this.Controls.Add(this.lblHigh);
@@ -209,15 +187,12 @@
             this.Name = "FormMain";
             this.Text = "High Lowen";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighTopLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighBotLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighTopRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighBotRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowBotRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowTopRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowBotLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowTopLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPlayerMid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighMid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHighRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowMid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLowLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerRight)).EndInit();
             this.ResumeLayout(false);
@@ -230,17 +205,15 @@
         private System.Windows.Forms.Label lblHigh;
         private System.Windows.Forms.Label lblLow;
         private System.Windows.Forms.Label lblInstructions;
-        private System.Windows.Forms.PictureBox imgHighTopLeft;
-        private System.Windows.Forms.PictureBox imgHighBotLeft;
-        private System.Windows.Forms.PictureBox imgHighTopRight;
-        private System.Windows.Forms.PictureBox imgHighBotRight;
-        private System.Windows.Forms.PictureBox imgLowBotRight;
-        private System.Windows.Forms.PictureBox imgLowTopRight;
-        private System.Windows.Forms.PictureBox imgLowBotLeft;
-        private System.Windows.Forms.PictureBox imgLowTopLeft;
-        private System.Windows.Forms.PictureBox imgPlayerMid;
+        private System.Windows.Forms.PictureBox imgHighLeft;
+        private System.Windows.Forms.PictureBox imgHighMid;
+        private System.Windows.Forms.PictureBox imgHighRight;
+        private System.Windows.Forms.PictureBox imgLowRight;
+        private System.Windows.Forms.PictureBox imgLowMid;
+        private System.Windows.Forms.PictureBox imgLowLeft;
         private System.Windows.Forms.PictureBox imgPlayerLeft;
         private System.Windows.Forms.PictureBox imgPlayerRight;
+        private System.Windows.Forms.Button btnRoll;
     }
 }
 

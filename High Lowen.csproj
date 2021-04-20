@@ -35,6 +35,10 @@
   <PropertyGroup>
     <StartupObject>High_Lowen.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
