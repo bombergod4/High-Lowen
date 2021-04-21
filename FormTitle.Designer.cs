@@ -65,7 +65,7 @@
             // tmrBackcolor
             // 
             this.tmrBackcolor.Enabled = true;
-            this.tmrBackcolor.Interval = 550;
+            this.tmrBackcolor.Interval = 475;
             this.tmrBackcolor.Tick += new System.EventHandler(this.tmrBackcolor_Tick);
             // 
             // lblTitle
@@ -92,6 +92,7 @@
             this.MinimizeBox = false;
             this.Name = "FormTitle";
             this.Text = "High Lowen";
+            this.Load += new System.EventHandler(this.FormTitle_Load);
             this.ResumeLayout(false);
 
         }

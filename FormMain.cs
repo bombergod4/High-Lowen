@@ -16,19 +16,32 @@ namespace High_Lowen
         bool choosePosition;
         bool diceHigh;
         bool diceLow;
+        bool secondRound = false;
+        bool labelInitialSwitch = true;
+        int playerTotal;
+        int dealerTotal;
         int roll;
+        int money = 100;
+        int red = 127;
+        int green = 127;
+        int blue = 129;
+        System.IO.Stream str;
+        System.Media.SoundPlayer snd;
+
         public FormMain()
         {
             InitializeComponent();
+            
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             choosePosition = true;
+            lblMoney.Text = "Money $" + money;
         }
-        public void dice_roll(PictureBox pictureBox)
+        public int dice_roll(PictureBox pictureBox)
         {
-             roll = generator.Next(1, 7);
+            roll = generator.Next(1, 7);
             if (roll == 1)
                 pictureBox.Image = Properties.Resources.dice_six_faces_one;
             else if (roll == 2)
@@ -41,8 +54,9 @@ namespace High_Lowen
                 pictureBox.Image = Properties.Resources.dice_six_faces_five;
             else if (roll == 6)
                 pictureBox.Image = Properties.Resources.dice_six_faces_six;
+            return roll;
+
         }
-            
 
         private void lblHigh_Click(object sender, EventArgs e)
         {
@@ -50,23 +64,24 @@ namespace High_Lowen
             {
                 lblInstructions.Text = "Roll higher than the dealer!";
                 choosePosition = false;
-                diceHigh = false;
-                diceLow = true;
+                diceHigh = true;
+                diceLow = false;
                 btnRoll.Enabled = true;
                 lblHigh.BackColor = Color.LightGreen;
                 lblLow.BackColor = Color.LightCoral;
-                dice_roll(imgHighLeft);
-                dice_roll(imgHighRight);
+                dealerTotal += dice_roll(imgHighLeft);
+                dealerTotal += dice_roll(imgHighRight);
             }
-            else if (diceHigh == true)
+            else if (diceHigh == true && secondRound == true)
             {
                 lblInstructions.Text = "Roll higher than the dealer!";
                 btnRoll.Enabled = true;
+                diceHigh = true;
                 lblHigh.BackColor = Color.LightGreen;
                 lblLow.BackColor = Color.LightCoral;
-                dice_roll(imgHighLeft);
-                dice_roll(imgHighMid);
-                dice_roll(imgHighRight);
+                dealerTotal += dice_roll(imgHighLeft);
+                dealerTotal += dice_roll(imgHighMid);
+                dealerTotal += dice_roll(imgHighRight);
             }
                 
         }
@@ -77,32 +92,191 @@ namespace High_Lowen
             {
                 lblInstructions.Text = "Roll lower than the dealer!";
                 choosePosition = false;
-                diceHigh = true;
-                diceLow = false;
+                diceHigh = false;
+                diceLow = true;
                 btnRoll.Enabled = true;
                 lblLow.BackColor = Color.LightGreen;
                 lblHigh.BackColor = Color.LightCoral;
-                dice_roll(imgLowLeft);
-                dice_roll(imgLowRight);
+                dealerTotal += dice_roll(imgLowLeft);
+                dealerTotal += dice_roll(imgLowRight);
             }
-            else if (diceLow == true)
+            else if (diceLow == true && secondRound == true)
             {
                 lblInstructions.Text = "Roll lower than the dealer!";
                 btnRoll.Enabled = true;
+                diceLow = true;
                 lblLow.BackColor = Color.LightGreen;
                 lblHigh.BackColor = Color.LightCoral;
-                dice_roll(imgLowMid);
+                dealerTotal += dice_roll(imgLowRight);
             }
         }
 
         private void btnRoll_Click(object sender, EventArgs e)
         {
-            if (choosePosition == false)
+            playerTotal += dice_roll(imgPlayerLeft);
+            playerTotal += dice_roll(imgPlayerRight);
+            //if (diceLow == true)
+            //    playerTotal = 0; /*ALWAYS WIN-CHEAT*/
+            //else if (diceHigh == true)
+            //    playerTotal = 19;
+            lblPlayer.Text = "Player Roll : " + playerTotal;
+            lblDealer.Text = "Dealer Roll : " + dealerTotal;
+            if (diceHigh == true && secondRound == false)
             {
-                dice_roll(imgPlayerLeft);
-                dice_roll(imgPlayerRight);
-                
+                if (playerTotal > dealerTotal)
+                {
+                    money += 4;
+                    lblMoney.Text = "Money $" + money;
+                    lblInstructions.Text = "Halfway there! Now, the hard part!";
+                    secondRound = true;
+                    btnRoll.Enabled = false;
+                    diceHigh = false;
+                    diceLow = true;
+                }
+                else
+                {
+                    lblInstructions.Text = "Better luck next time";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                }
             }
+            else if (diceLow == true && secondRound == false)
+            {
+                if (playerTotal < dealerTotal)
+                {
+                    money += 4;
+                    lblMoney.Text = "Money $" + money;
+                    lblInstructions.Text = "Halfway there! Now, the hard part!";
+                    secondRound = true;
+                    btnRoll.Enabled = false;
+                    diceHigh = true;
+                    diceLow = false;
+                }
+                else
+                {
+                    lblInstructions.Text = "Better luck next time";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                }
+            }
+            else if (diceHigh == true && secondRound == true)
+            {
+                if (playerTotal > dealerTotal)
+                {
+                    money += 30;
+                    lblMoney.Text = "Money $" + money;
+                    lblInstructions.Text = "Fortune smiles upon you today!";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                    tmrWin.Enabled = true;
+                    str = Properties.Resources.Mirage_Voyage_Climax;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.Play();
+                }
+                else
+                {
+                    lblInstructions.Text = "Better luck next time";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                }
+            }
+            else if (diceLow == true && secondRound == true)
+            {
+                if (playerTotal < dealerTotal)
+                {
+                    money += 30;
+                    lblMoney.Text = "Money $" + money;
+                    lblInstructions.Text = "Fortune smiles upon you today!";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                    tmrWin.Enabled = true;
+                    str = Properties.Resources.Mirage_Voyage_Climax;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.Play();
+                }
+                else
+                {
+                    lblInstructions.Text = "Better luck next time";
+                    btnPlay.Enabled = true;
+                    btnRoll.Enabled = false;
+                }
+            }
+            dealerTotal = 0;
+            playerTotal = 0;
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            playerTotal = 0;
+            dealerTotal = 0;
+            choosePosition = true;
+            diceHigh = false;
+            diceLow = false;
+            secondRound = false;
+            btnRoll.Enabled = false;
+            labelInitialSwitch = true;
+            lblHigh.BackColor = default;
+            lblLow.BackColor = default;
+            imgHighLeft.Image = null;
+            imgHighMid.Image = null;
+            imgHighRight.Image = null;
+            imgLowLeft.Image = null;
+            imgLowRight.Image = null;
+            imgPlayerLeft.Image = null;
+            imgPlayerRight.Image = null;
+            lblInstructions.ForeColor = default;
+            lblMoney.ForeColor = default;
+            this.BackColor = default;
+            money -= 5;
+            lblMoney.Text = "Money $" + money;
+            lblInstructions.Text = "$5 to win $30? What a steal! First, choose whether to do HIGH or LOW first";
+            snd.Stop();
+            str = Properties.Resources.Mirage_Voyage_Looping;
+            snd = new System.Media.SoundPlayer(str);
+            snd.PlayLooping();
+        }
+
+        private void tmrWin_Tick(object sender, EventArgs e)
+        {
+            if (this.BackColor == Color.White)
+                this.BackColor = Color.HotPink;
+            else if (this.BackColor == Color.HotPink)
+                this.BackColor = Color.Purple;
+            else if (this.BackColor == Color.Purple)
+                this.BackColor = Color.Aqua;
+            else if (this.BackColor == Color.Aqua)
+                this.BackColor = Color.LightGreen;
+            else if (this.BackColor == Color.LightGreen)
+                this.BackColor = Color.OrangeRed;
+            else if (this.BackColor == Color.OrangeRed)
+                this.BackColor = Color.DarkRed;
+            else
+                this.BackColor = Color.White;
+            if (labelInitialSwitch == true)
+            {
+                lblInstructions.ForeColor = Color.FromArgb(red, green, blue);
+                lblMoney.ForeColor = Color.Gold;
+                labelInitialSwitch = false;
+            }
+            else if (lblInstructions.ForeColor != Color.FromArgb(1, 1, 255))
+            {
+                red -= 1;
+                green -= 1;
+                blue += 1;
+                lblInstructions.ForeColor = Color.FromArgb(red, green, blue);
+            }
+            else
+                labelInitialSwitch = true;
+                
+                
+                
+
+       
         }
     }
 }

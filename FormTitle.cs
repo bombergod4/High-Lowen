@@ -51,5 +51,14 @@ namespace High_Lowen
             //this.Hide();
             //FormMan = new Form;
         }
+
+        private void FormTitle_Load(object sender, EventArgs e)
+        {
+            System.IO.Stream str;
+            System.Media.SoundPlayer snd;
+            str = Properties.Resources.Mirage_Voyage_Looping;
+            snd = new System.Media.SoundPlayer(str);
+            snd.PlayLooping();
+        }
     }
 }

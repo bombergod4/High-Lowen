@@ -139,5 +139,23 @@ namespace High_Lowen.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Mirage_Voyage_Climax {
+            get {
+                return ResourceManager.GetStream("Mirage_Voyage_Climax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Mirage_Voyage_Looping {
+            get {
+                return ResourceManager.GetStream("Mirage_Voyage_Looping", resourceCulture);
+            }
+        }
     }
 }

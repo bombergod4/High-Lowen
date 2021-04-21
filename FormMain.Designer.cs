@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.lblHigh = new System.Windows.Forms.Label();
             this.lblLow = new System.Windows.Forms.Label();
@@ -36,16 +37,20 @@
             this.imgHighMid = new System.Windows.Forms.PictureBox();
             this.imgHighRight = new System.Windows.Forms.PictureBox();
             this.imgLowRight = new System.Windows.Forms.PictureBox();
-            this.imgLowMid = new System.Windows.Forms.PictureBox();
             this.imgLowLeft = new System.Windows.Forms.PictureBox();
             this.imgPlayerLeft = new System.Windows.Forms.PictureBox();
             this.imgPlayerRight = new System.Windows.Forms.PictureBox();
             this.btnRoll = new System.Windows.Forms.Button();
+            this.lblMoney = new System.Windows.Forms.Label();
+            this.btnPlay = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.lblDealer = new System.Windows.Forms.Label();
+            this.lblPlayer = new System.Windows.Forms.Label();
+            this.tmrWin = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHighLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHighMid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHighRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLowRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowMid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerRight)).BeginInit();
@@ -66,7 +71,7 @@
             // 
             this.lblLow.AutoSize = true;
             this.lblLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLow.Location = new System.Drawing.Point(469, 25);
+            this.lblLow.Location = new System.Drawing.Point(515, 25);
             this.lblLow.Name = "lblLow";
             this.lblLow.Size = new System.Drawing.Size(147, 61);
             this.lblLow.TabIndex = 1;
@@ -75,13 +80,12 @@
             // 
             // lblInstructions
             // 
-            this.lblInstructions.AutoSize = true;
             this.lblInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructions.Location = new System.Drawing.Point(127, 275);
+            this.lblInstructions.Location = new System.Drawing.Point(115, 200);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(550, 31);
+            this.lblInstructions.Size = new System.Drawing.Size(564, 66);
             this.lblInstructions.TabIndex = 2;
-            this.lblInstructions.Text = "Choose whether die will be HIGH or LOW";
+            this.lblInstructions.Text = "$5 to win $30? What a steal! First, choose whether to do HIGH or LOW first!\r\n";
             // 
             // imgHighLeft
             // 
@@ -112,25 +116,16 @@
             // 
             // imgLowRight
             // 
-            this.imgLowRight.Location = new System.Drawing.Point(673, 89);
+            this.imgLowRight.Location = new System.Drawing.Point(607, 89);
             this.imgLowRight.Name = "imgLowRight";
             this.imgLowRight.Size = new System.Drawing.Size(115, 83);
             this.imgLowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgLowRight.TabIndex = 9;
             this.imgLowRight.TabStop = false;
             // 
-            // imgLowMid
-            // 
-            this.imgLowMid.Location = new System.Drawing.Point(552, 89);
-            this.imgLowMid.Name = "imgLowMid";
-            this.imgLowMid.Size = new System.Drawing.Size(115, 83);
-            this.imgLowMid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgLowMid.TabIndex = 8;
-            this.imgLowMid.TabStop = false;
-            // 
             // imgLowLeft
             // 
-            this.imgLowLeft.Location = new System.Drawing.Point(431, 89);
+            this.imgLowLeft.Location = new System.Drawing.Point(471, 89);
             this.imgLowLeft.Name = "imgLowLeft";
             this.imgLowLeft.Size = new System.Drawing.Size(115, 83);
             this.imgLowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -139,7 +134,7 @@
             // 
             // imgPlayerLeft
             // 
-            this.imgPlayerLeft.Location = new System.Drawing.Point(204, 339);
+            this.imgPlayerLeft.Location = new System.Drawing.Point(89, 322);
             this.imgPlayerLeft.Name = "imgPlayerLeft";
             this.imgPlayerLeft.Size = new System.Drawing.Size(115, 83);
             this.imgPlayerLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,7 +143,7 @@
             // 
             // imgPlayerRight
             // 
-            this.imgPlayerRight.Location = new System.Drawing.Point(480, 339);
+            this.imgPlayerRight.Location = new System.Drawing.Point(365, 322);
             this.imgPlayerRight.Name = "imgPlayerRight";
             this.imgPlayerRight.Size = new System.Drawing.Size(115, 83);
             this.imgPlayerRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -158,7 +153,7 @@
             // btnRoll
             // 
             this.btnRoll.Enabled = false;
-            this.btnRoll.Location = new System.Drawing.Point(325, 339);
+            this.btnRoll.Location = new System.Drawing.Point(210, 322);
             this.btnRoll.Name = "btnRoll";
             this.btnRoll.Size = new System.Drawing.Size(149, 83);
             this.btnRoll.TabIndex = 14;
@@ -166,16 +161,74 @@
             this.btnRoll.UseVisualStyleBackColor = true;
             this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
             // 
+            // lblMoney
+            // 
+            this.lblMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoney.Location = new System.Drawing.Point(501, 322);
+            this.lblMoney.Name = "lblMoney";
+            this.lblMoney.Size = new System.Drawing.Size(124, 83);
+            this.lblMoney.TabIndex = 15;
+            this.lblMoney.Text = "Money $100";
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Enabled = false;
+            this.btnPlay.Location = new System.Drawing.Point(673, 322);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(115, 47);
+            this.btnPlay.TabIndex = 16;
+            this.btnPlay.Text = "Play again";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(673, 391);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(115, 47);
+            this.btnQuit.TabIndex = 17;
+            this.btnQuit.Text = "Return to main menu";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // lblDealer
+            // 
+            this.lblDealer.AutoSize = true;
+            this.lblDealer.Location = new System.Drawing.Point(193, 425);
+            this.lblDealer.Name = "lblDealer";
+            this.lblDealer.Size = new System.Drawing.Size(38, 13);
+            this.lblDealer.TabIndex = 18;
+            this.lblDealer.Text = "Dealer";
+            // 
+            // lblPlayer
+            // 
+            this.lblPlayer.AutoSize = true;
+            this.lblPlayer.Location = new System.Drawing.Point(315, 424);
+            this.lblPlayer.Name = "lblPlayer";
+            this.lblPlayer.Size = new System.Drawing.Size(36, 13);
+            this.lblPlayer.TabIndex = 19;
+            this.lblPlayer.Text = "Player";
+            // 
+            // tmrWin
+            // 
+            this.tmrWin.Interval = 475;
+            this.tmrWin.Tick += new System.EventHandler(this.tmrWin_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPlayer);
+            this.Controls.Add(this.lblDealer);
+            this.Controls.Add(this.btnQuit);
+            this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.lblMoney);
             this.Controls.Add(this.btnRoll);
             this.Controls.Add(this.imgPlayerRight);
             this.Controls.Add(this.imgPlayerLeft);
             this.Controls.Add(this.imgLowRight);
-            this.Controls.Add(this.imgLowMid);
             this.Controls.Add(this.imgLowLeft);
             this.Controls.Add(this.imgHighRight);
             this.Controls.Add(this.imgHighMid);
@@ -191,7 +244,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgHighMid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgHighRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLowRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLowMid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLowLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPlayerRight)).EndInit();
@@ -209,11 +261,16 @@
         private System.Windows.Forms.PictureBox imgHighMid;
         private System.Windows.Forms.PictureBox imgHighRight;
         private System.Windows.Forms.PictureBox imgLowRight;
-        private System.Windows.Forms.PictureBox imgLowMid;
         private System.Windows.Forms.PictureBox imgLowLeft;
         private System.Windows.Forms.PictureBox imgPlayerLeft;
         private System.Windows.Forms.PictureBox imgPlayerRight;
         private System.Windows.Forms.Button btnRoll;
+        private System.Windows.Forms.Label lblMoney;
+        private System.Windows.Forms.Button btnPlay;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Label lblDealer;
+        private System.Windows.Forms.Label lblPlayer;
+        private System.Windows.Forms.Timer tmrWin;
     }
 }
 

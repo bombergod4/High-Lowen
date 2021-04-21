@@ -120,5 +120,11 @@
   <ItemGroup>
     <None Include="Resources\dice-six-faces-two_38562.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mirage Voyage Looping.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mirage Voyage Climax.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
