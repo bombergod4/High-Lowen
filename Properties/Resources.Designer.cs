@@ -157,5 +157,14 @@ namespace High_Lowen.Properties {
                 return ResourceManager.GetStream("Mirage_Voyage_Looping", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Mirage_Voyage_Looping__Distant_ {
+            get {
+                return ResourceManager.GetStream("Mirage_Voyage_Looping__Distant_", resourceCulture);
+            }
+        }
     }
 }

@@ -38,6 +38,11 @@ namespace High_Lowen
         {
             choosePosition = true;
             lblMoney.Text = "Money $" + money;
+            lblLow.Enabled = true;
+            lblHigh.Enabled = true;
+            str = Properties.Resources.Mirage_Voyage_Looping;
+            snd = new System.Media.SoundPlayer(str);
+            snd.PlayLooping();
         }
         public int dice_roll(PictureBox pictureBox)
         {
@@ -64,6 +69,7 @@ namespace High_Lowen
             {
                 lblInstructions.Text = "Roll higher than the dealer!";
                 choosePosition = false;
+                lblHigh.Enabled = false;
                 diceHigh = true;
                 diceLow = false;
                 btnRoll.Enabled = true;
@@ -76,6 +82,7 @@ namespace High_Lowen
             {
                 lblInstructions.Text = "Roll higher than the dealer!";
                 btnRoll.Enabled = true;
+                lblHigh.Enabled = false;
                 diceHigh = true;
                 lblHigh.BackColor = Color.LightGreen;
                 lblLow.BackColor = Color.LightCoral;
@@ -92,6 +99,7 @@ namespace High_Lowen
             {
                 lblInstructions.Text = "Roll lower than the dealer!";
                 choosePosition = false;
+                lblLow.Enabled = false;
                 diceHigh = false;
                 diceLow = true;
                 btnRoll.Enabled = true;
@@ -103,6 +111,7 @@ namespace High_Lowen
             else if (diceLow == true && secondRound == true)
             {
                 lblInstructions.Text = "Roll lower than the dealer!";
+                lblLow.Enabled = false;
                 btnRoll.Enabled = true;
                 diceLow = true;
                 lblLow.BackColor = Color.LightGreen;
@@ -212,33 +221,46 @@ namespace High_Lowen
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            playerTotal = 0;
-            dealerTotal = 0;
-            choosePosition = true;
-            diceHigh = false;
-            diceLow = false;
-            secondRound = false;
-            btnRoll.Enabled = false;
-            labelInitialSwitch = true;
-            lblHigh.BackColor = default;
-            lblLow.BackColor = default;
-            imgHighLeft.Image = null;
-            imgHighMid.Image = null;
-            imgHighRight.Image = null;
-            imgLowLeft.Image = null;
-            imgLowRight.Image = null;
-            imgPlayerLeft.Image = null;
-            imgPlayerRight.Image = null;
-            lblInstructions.ForeColor = default;
-            lblMoney.ForeColor = default;
-            this.BackColor = default;
-            money -= 5;
-            lblMoney.Text = "Money $" + money;
-            lblInstructions.Text = "$5 to win $30? What a steal! First, choose whether to do HIGH or LOW first";
-            snd.Stop();
-            str = Properties.Resources.Mirage_Voyage_Looping;
-            snd = new System.Media.SoundPlayer(str);
-            snd.PlayLooping();
+            if (money >= 5)
+            {
+                if (tmrWin.Enabled == true)
+                {
+                    snd.Stop();
+                    str = Properties.Resources.Mirage_Voyage_Looping;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.PlayLooping();
+                }
+                playerTotal = 0;
+                dealerTotal = 0;
+                choosePosition = true;
+                diceHigh = false;
+                diceLow = false;
+                secondRound = false;
+                btnRoll.Enabled = false;
+                btnPlay.Enabled = false;
+                tmrWin.Enabled = false;
+                lblHigh.Enabled = true;
+                lblLow.Enabled = true;
+                labelInitialSwitch = true;
+                lblHigh.BackColor = default;
+                lblLow.BackColor = default;
+                imgHighLeft.Image = null;
+                imgHighMid.Image = null;
+                imgHighRight.Image = null;
+                imgLowLeft.Image = null;
+                imgLowRight.Image = null;
+                imgPlayerLeft.Image = null;
+                imgPlayerRight.Image = null;
+                lblInstructions.ForeColor = default;
+                lblMoney.ForeColor = default;
+                this.BackColor = Color.FromArgb(128, 128, 255);
+                money -= 5;
+                lblMoney.Text = "Money $" + money;
+                lblInstructions.Text = "$5 to win $30? What a steal! First, choose whether to do HIGH or LOW first";
+            }
+            else
+                lblInstructions.Text = "Come back when you're a little... richer.";
+
         }
 
         private void tmrWin_Tick(object sender, EventArgs e)

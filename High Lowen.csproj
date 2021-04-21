@@ -126,5 +126,8 @@
   <ItemGroup>
     <None Include="Resources\Mirage Voyage Climax.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mirage Voyage Looping %28Distant%29.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

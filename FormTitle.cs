@@ -56,7 +56,7 @@ namespace High_Lowen
         {
             System.IO.Stream str;
             System.Media.SoundPlayer snd;
-            str = Properties.Resources.Mirage_Voyage_Looping;
+            str = Properties.Resources.Mirage_Voyage_Looping__Distant_;
             snd = new System.Media.SoundPlayer(str);
             snd.PlayLooping();
         }
